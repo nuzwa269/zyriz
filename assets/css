@@ -1,0 +1,230 @@
+/* =========================================================
+   ZYRIZ ADMIN EDITOR — PREMIUM STYLESHEET
+   Elementor-inspired dark editor with sidebar + preview
+   ========================================================= */
+
+/* ─── CSS Variables ─── */
+:root {
+  --ze-bg:           #1e1e2e;
+  --ze-bg2:          #252536;
+  --ze-bg3:          #2a2a3d;
+  --ze-bg4:          #32324a;
+  --ze-surface:      #2e2e44;
+  --ze-border:       rgba(255,255,255,0.08);
+  --ze-border-hover: rgba(255,255,255,0.15);
+  --ze-text:         #e4e4ef;
+  --ze-text-muted:   #8888a4;
+  --ze-text-dim:     #5a5a72;
+  --ze-gold:         #D4AF37;
+  --ze-gold-light:   #E8C547;
+  --ze-gold-dark:    #B8941E;
+  --ze-accent:       #6C63FF;
+  --ze-success:      #22c55e;
+--ze-danger:       #ef4444;
+  --ze-warning:      #f59e0b;
+  --ze-font:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ze-radius:       8px;
+  --ze-radius-sm:    6px;
+  --ze-radius-lg:    12px;
+  --ze-shadow:       0 4px 20px rgba(0,0,0,0.3);
+  --ze-shadow-lg:    0 8px 40px rgba(0,0,0,0.5);
+  --ze-transition:   0.2s ease;
+  --ze-sidebar-w:    380px;
+  --ze-topbar-h:     56px;
+}
+
+/* ─── Normalize WP admin area ─── */
+#wpcontent { padding-left: 0 !important; }
+#wpbody-content { padding-bottom: 0 !important; }
+.zyriz-editor-wrap { margin-left: -20px; }
+#wpfooter { display: none !important; }
+#adminmenuwrap { z-index: 10000; }
+
+/* ─── Editor Root ─── */
+.zyriz-editor-wrap {
+  font-family: var(--ze-font);
+  color: var(--ze-text);
+  background: var(--ze-bg);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 32px); /* Account for WP admin bar */
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+.ze-topbar {
+  height: var(--ze-topbar-h);
+  background: var(--ze-bg2);
+  border-bottom: 1px solid var(--ze-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.ze-topbar-left,
+.ze-topbar-center,
+.ze-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ze-logo {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--ze-gold);
+  user-select: none;
+}
+
+.ze-version {
+  font-size: 10px;
+  color: var(--ze-text-dim);
+  background: var(--ze-bg4);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* Responsive preview toggles */
+.ze-responsive-toggles {
+  display: flex;
+  background: var(--ze-bg);
+  border-radius: var(--ze-radius);
+  padding: 2px;
+  gap: 2px;
+}
+
+.ze-device-btn {
+  background: transparent;
+  border: none;
+  color: var(--ze-text-muted);
+  padding: 6px 12px;
+  border-radius: var(--ze-radius-sm);
+  cursor: pointer;
+  transition: var(--ze-transition);
+  display: flex;
+  align-items: center;
+}
+
+.ze-device-btn:hover { color: var(--ze-text); }
+.ze-device-btn.active {
+  background: var(--ze-gold);
+  color: #000;
+}
+
+/* Separator */
+.ze-separator {
+  width: 1px;
+  height: 28px;
+  background: var(--ze-border);
+  margin: 0 4px;
+}
+
+/* Save status indicator */
+.ze-save-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--ze-text-muted);
+}
+.ze-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ze-success);
+  transition: background var(--ze-transition);
+}
+
+.ze-save-status.saving .ze-status-dot { background: var(--ze-warning); animation: ze-pulse 1s infinite; }
+.ze-save-status.unsaved .ze-status-dot { background: var(--ze-warning); }
+.ze-save-status.error .ze-status-dot { background: var(--ze-danger); }
+
+@keyframes ze-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.ze-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--ze-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--ze-font);
+  cursor: pointer;
+  transition: all var(--ze-transition);
+  border: none;
+  white-space: nowrap;
+}
+
+.ze-btn-primary {
+  background: var(--ze-gold);
+  color: #000;
+}
+.ze-btn-primary:hover {
+  background: var(--ze-gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212,175,55,0.3);
+}
+
+.ze-btn-outline {
+  background: transparent;
+  color: var(--ze-text-muted);
+  border: 1px solid var(--ze-border);
+}
+.ze-btn-outline:hover {
+  border-color: var(--ze-border-hover);
+  color: var(--ze-text);
+  background: var(--ze-bg4);
+}
+
+.ze-btn-ghost {
+  background: transparent;
+  color: var(--ze-text-muted);
+}
+.ze-btn-ghost:hover {
+  color: var(--ze-text);
+  background: var(--ze-bg4);
+}
+.ze-btn-ghost:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.ze-btn-danger {
+  background: var(--ze-danger);
+  color: #fff;
+}
+.ze-btn-danger:hover {
+  background: #dc2626;
+}
+
+.ze-btn-success {
+  background: var(--ze-success);
+  color: #fff;
+}
+
+.ze-btn-sm {
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.ze-btn-xs {
+  padding: 3px 8px;
+  font-size: 10px;
+}
+
+.ze-btn-block {
+  width: 100%;
+  justify-content: center;
+}
