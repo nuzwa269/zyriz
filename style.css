@@ -1,0 +1,67 @@
+/*
+Theme Name: Zyriz Jewelry Luxury
+Theme URI: https://github.com/nuzwa269/zyriz
+Author: nuzwa269
+Description: A modern, high-end Black and Gold theme for Zyriz Jewelry brand. Includes WhatsApp checkout integration.
+Version: 1.0
+*/
+
+:root {
+    --gold: #D4AF37;
+    --black: #000000;
+    --dark-grey: #1a1a1a;
+    --light-grey: #333333;
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, .gold-text {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Button Styles */
+.button, .gold-button, .woocommerce-button {
+    background-color: var(--gold) !important;
+    color: var(--black) !important;
+    padding: 15px 30px !important;
+    border: none !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover, .gold-button:hover {
+    background-color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+/* Product Cards */
+.product {
+    background: var(--dark-grey);
+    border: 1px solid var(--gold);
+    padding: 20px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.product:hover {
+    box-shadow: 0 0 15px var(--gold);
+}
+
+/* WooCommerce Overrides */
+.woocommerce-Price-amount {
+    color: var(--gold);
+    font-size: 1.2em;
+}
